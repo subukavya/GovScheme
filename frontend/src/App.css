@@ -1,0 +1,85 @@
+.hero h1 {
+  font-size: 3rem;
+  color: #1b5e20;
+  margin-bottom: 20px;
+  line-height: 1.2;
+  max-width: 900px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: #555;
+  line-height: 1.7;
+  max-width: 700px;
+  margin: 0 auto 30px;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.primary,
+.secondary {
+  padding: 14px 28px;
+  border: none;
+  border-radius: 8px;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.primary {
+  background: #2e7d32;
+  color: white;
+}
+
+.secondary {
+  background: white;
+  border: 2px solid #2e7d32;
+  color: #2e7d32;
+}
+
+.primary:hover {
+  background: #1b5e20;
+}
+
+.secondary:hover {
+  background: #2e7d32;
+  color: white;
+}
+.features {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.features h2 {
+  color: #1b5e20;
+  margin-bottom: 30px;
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 300px;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+  color: #2e7d32;
+  margin-bottom: 10px;
+}
