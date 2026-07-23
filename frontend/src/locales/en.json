@@ -1,0 +1,11 @@
+{
+  "login": "Login",
+  "email": "Email Address",
+  "password": "Password",
+  "continue": "Continue",
+  "language": "Select Your Language",
+  "profile": "Choose Profile Input Method",
+  "manual": "Manual Form",
+  "ocr": "OCR Upload",
+  "voice": "Voice Input"
+}

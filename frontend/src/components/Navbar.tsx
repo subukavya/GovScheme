@@ -6,10 +6,21 @@ function Navbar() {
       <div className="logo">GovScheme AI</div>
 
       <ul className="nav-links">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Schemes</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Login</a></li>
+        <li>
+          <a href="/">Home</a>
+        </li>
+
+        <li>
+          <a href="/login">Login</a>
+        </li>
+
+        <li>
+          <a href="#">Schemes</a>
+        </li>
+
+        <li>
+          <a href="#">About</a>
+        </li>
       </ul>
     </nav>
   );
