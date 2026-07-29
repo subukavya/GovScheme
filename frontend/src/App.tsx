@@ -3,12 +3,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import LanguageSelection from "./pages/LanguageSelection";
-import ProfileMethod from "./pages/Profile";
-import Manual from "./pages/Manual";
 import OCRUpload from "./pages/OCRUpload";
 import VoiceInput from "./pages/VoiceInput";
 import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
+import Manual from "./pages/Manual";
 
 function App() {
   return (
@@ -17,7 +16,6 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/language" element={<LanguageSelection />} />
-        <Route path="/profile-method" element={<ProfileMethod />} />
         <Route path="/manual-form" element={<Manual />} />
         <Route path="/ocr-upload" element={<OCRUpload />} />
         <Route path="/voice-input" element={<VoiceInput />} />
