@@ -4,7 +4,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import LanguageSelection from "./pages/LanguageSelection";
 import ProfileMethod from "./pages/Profile";
-import ManualForm from "./pages/ManualForm";
+import Manual from "./pages/Manual";
 import OCRUpload from "./pages/OCRUpload";
 import VoiceInput from "./pages/VoiceInput";
 import Dashboard from "./pages/Dashboard";
@@ -18,7 +18,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/language" element={<LanguageSelection />} />
         <Route path="/profile-method" element={<ProfileMethod />} />
-        <Route path="/manual-form" element={<ManualForm />} />
+        <Route path="/manual-form" element={<Manual />} />
         <Route path="/ocr-upload" element={<OCRUpload />} />
         <Route path="/voice-input" element={<VoiceInput />} />
         <Route path="/dashboard" element={<Dashboard />} />
