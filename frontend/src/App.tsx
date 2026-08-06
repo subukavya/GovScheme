@@ -1,28 +1,42 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { AuthProvider } from "./context/AuthContext";
+import { LanguageProvider } from "./context/LanguageContext";
+import { UserProfileProvider } from "./context/UserProfileContext";
 
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import LanguageSelection from "./pages/LanguageSelection";
-import OCRUpload from "./pages/OCRUpload";
-import VoiceInput from "./pages/VoiceInput";
+import Landing from "./pages/Landing";
+import MobileLogin from "./pages/MobileLogin";
+import OTPVerification from "./pages/OTPVerification";
 import Dashboard from "./pages/Dashboard";
-import NotFound from "./pages/NotFound";
-import Manual from "./pages/Manual";
+import Profile from "./pages/Profile";
+import Schemes from "./pages/Schemes";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/language" element={<LanguageSelection />} />
-        <Route path="/manual-form" element={<Manual />} />
-        <Route path="/ocr-upload" element={<OCRUpload />} />
-        <Route path="/voice-input" element={<VoiceInput />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </BrowserRouter>
+    <AuthProvider>
+      <LanguageProvider>
+        <UserProfileProvider>
+          <BrowserRouter>
+            <Routes>
+              {/* Public Landing */}
+              <Route path="/" element={<Landing />} />
+
+              {/* Mobile Phone Authentication */}
+              <Route path="/login" element={<MobileLogin />} />
+              <Route path="/verify-otp" element={<OTPVerification />} />
+              <Route path="/register" element={<Navigate to="/login" replace />} />
+
+              {/* Main Application Pages */}
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/schemes" element={<Schemes />} />
+
+              {/* Catch-all Fallback */}
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+          </BrowserRouter>
+        </UserProfileProvider>
+      </LanguageProvider>
+    </AuthProvider>
   );
 }
 
