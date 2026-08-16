@@ -1,7 +1,7 @@
-import { Shield, Sparkles } from "lucide-react";
+import { Shield } from "lucide-react";
 import { Link } from "react-router-dom";
 
-interface LogoProps {
+export interface LogoProps {
   size?: "sm" | "md" | "lg";
   clickable?: boolean;
 }
@@ -9,34 +9,29 @@ interface LogoProps {
 export default function Logo({ size = "md", clickable = true }: LogoProps) {
   const iconSizes = {
     sm: 18,
-    md: 24,
-    lg: 32,
+    md: 22,
+    lg: 28,
   };
 
   const textSizes = {
     sm: "text-lg",
-    md: "text-2xl",
-    lg: "text-3xl",
+    md: "text-xl sm:text-2xl",
+    lg: "text-2xl sm:text-3xl",
   };
 
   const content = (
-    <div className="flex items-center gap-2.5 group cursor-pointer">
-      <div className="relative flex items-center justify-center">
-        <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform duration-300">
-          <Shield size={iconSizes[size]} className="text-white" />
-        </div>
-        <div className="absolute -top-1 -right-1 bg-amber-400 text-slate-900 rounded-full p-0.5 shadow">
-          <Sparkles size={10} className="fill-amber-400" />
-        </div>
+    <div className="flex items-center gap-3 group cursor-pointer">
+      <div className="w-10 h-10 rounded-[14px] bg-[#2563EB] flex items-center justify-center text-white shadow-sm shadow-blue-600/30 group-hover:scale-105 transition-transform duration-200 shrink-0">
+        <Shield size={iconSizes[size]} className="text-white" />
       </div>
       <div className="flex flex-col">
-        <div className={`font-black tracking-tight ${textSizes[size]} text-slate-900 flex items-center gap-1`}>
+        <div className={`font-extrabold tracking-tight ${textSizes[size]} text-[#0F172A] flex items-center gap-1`}>
           GovScheme
-          <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+          <span className="text-[#2563EB]">
             AI
           </span>
         </div>
-        <span className="text-[10px] font-semibold tracking-wider text-blue-700 uppercase -mt-1">
+        <span className="text-[10px] font-bold tracking-wider text-[#64748B] uppercase -mt-0.5">
           Government Welfare Portal
         </span>
       </div>
@@ -44,7 +39,7 @@ export default function Logo({ size = "md", clickable = true }: LogoProps) {
   );
 
   if (clickable) {
-    return <Link to="/">{content}</Link>;
+    return <Link to="/" className="inline-block focus-visible:ring-2 focus-visible:ring-blue-600 rounded-[14px]">{content}</Link>;
   }
 
   return content;

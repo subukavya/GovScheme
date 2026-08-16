@@ -158,54 +158,55 @@ export default function Schemes() {
 
   return (
     <DashboardLayout>
-      <div className="space-y-10 animate-in fade-in duration-300">
+      <div className="space-y-8">
         
-        {/* Header Title Bar */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 bg-white p-8 rounded-3xl border border-slate-200/80 shadow-sm">
+        {/* Header Title */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 sm:p-8 rounded-[24px] border border-[#E2E8F0] shadow-soft">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-bold mb-2">
-              <Sparkles size={14} /> AI Recommendation Engine
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#DBEAFE] text-[#2563EB] text-xs font-bold mb-2">
+              <Sparkles size={14} /> Welfare Scheme Explorer
             </div>
-            <h1 className="text-3xl font-black text-slate-900 tracking-tight">Government Schemes</h1>
-            <p className="text-xs text-slate-500 mt-1">
-              Matched for <strong className="text-slate-800">{profile.name}</strong> ({profile.occupation}, {profile.state})
+            <h1 className="text-2xl sm:text-3xl font-bold text-[#0F172A] tracking-tight">Government Schemes</h1>
+            <p className="text-xs text-[#64748B] mt-1 font-normal">
+              Matched for <strong className="text-[#0F172A]">{profile.name}</strong> ({profile.occupation}, {profile.state})
             </p>
           </div>
 
           <button
             onClick={() => setAiWidgetOpen(true)}
-            className="px-5 py-2.5 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold shadow-md transition flex items-center gap-2 cursor-pointer shrink-0"
+            className="px-5 py-2.5 rounded-[14px] bg-[#2563EB] hover:bg-blue-700 text-white text-xs font-bold shadow-md transition flex items-center gap-2 cursor-pointer shrink-0 min-h-[44px]"
           >
             <Sparkles size={16} /> Ask AI Assistant
           </button>
         </div>
 
         {/* Filter Bar */}
-        <div className="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-xs space-y-4">
+        <div className="bg-white rounded-[20px] p-5 sm:p-6 border border-[#E2E8F0] shadow-soft space-y-4">
           <div className="flex flex-col sm:flex-row gap-4">
             <div className="relative flex-1">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-[#64748B]" size={18} />
               <input
                 type="text"
+                aria-label="Search schemes"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search schemes or benefits..."
-                className="w-full h-12 pl-11 pr-4 rounded-2xl border border-slate-200 bg-slate-50/50 text-slate-900 text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+                placeholder="Search schemes by name or department..."
+                className="w-full h-12 pl-11 pr-4 rounded-[14px] border border-[#E2E8F0] bg-white text-[#0F172A] text-sm focus:outline-none focus:border-[#2563EB] focus:ring-2 focus:ring-blue-100 min-h-[48px]"
               />
             </div>
 
-            <div className="flex items-center gap-3 bg-slate-50 px-4 py-2 rounded-2xl border border-slate-200 shrink-0">
-              <SlidersHorizontal size={16} className="text-blue-600" />
-              <span className="text-xs font-bold text-slate-700">Min Match:</span>
+            <div className="flex items-center gap-3 bg-slate-50 px-4 py-2 rounded-[14px] border border-[#E2E8F0] shrink-0 min-h-[48px]">
+              <SlidersHorizontal size={16} className="text-[#2563EB]" />
+              <span className="text-xs font-bold text-[#0F172A]">Min Match:</span>
               <div className="flex gap-1">
                 {[70, 85, 90].map((score) => (
                   <button
                     key={score}
                     onClick={() => setMinMatchScore(score)}
-                    className={`px-3 py-1 text-xs font-bold rounded-xl transition cursor-pointer ${
+                    className={`px-3 py-1.5 text-xs font-bold rounded-[10px] transition cursor-pointer min-h-[36px] ${
                       minMatchScore === score
-                        ? "bg-blue-600 text-white"
-                        : "bg-white text-slate-600 border border-slate-200"
+                        ? "bg-[#2563EB] text-white"
+                        : "bg-white text-[#64748B] border border-[#E2E8F0]"
                     }`}
                   >
                     {score}%+
@@ -220,10 +221,10 @@ export default function Schemes() {
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-4 py-2 text-xs font-bold rounded-xl whitespace-nowrap transition cursor-pointer ${
+                className={`px-4 py-2.5 text-xs font-bold rounded-[12px] whitespace-nowrap transition cursor-pointer min-h-[40px] ${
                   selectedCategory === cat
-                    ? "bg-blue-600 text-white shadow-xs"
-                    : "bg-slate-100 text-slate-600 hover:bg-slate-200/80"
+                    ? "bg-[#2563EB] text-white shadow-xs"
+                    : "bg-slate-100 text-[#64748B] hover:bg-slate-200"
                 }`}
               >
                 {cat}
@@ -232,9 +233,9 @@ export default function Schemes() {
           </div>
         </div>
 
-        {/* Schemes Grid */}
+        {/* Schemes Grid: MAX 2 CARDS PER ROW on Desktop as per Layout Rules */}
         {filteredSchemes.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {filteredSchemes.map((scheme) => (
               <SchemeCard
                 key={scheme.id}
@@ -251,13 +252,13 @@ export default function Schemes() {
             ))}
           </div>
         ) : (
-          <div className="bg-white rounded-3xl p-12 text-center border border-slate-200 space-y-4">
-            <div className="w-16 h-16 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center mx-auto">
+          <div className="bg-white rounded-[20px] p-12 text-center border border-[#E2E8F0] space-y-4">
+            <div className="w-16 h-16 rounded-full bg-slate-100 text-[#64748B] flex items-center justify-center mx-auto">
               <Search size={32} />
             </div>
-            <h3 className="text-xl font-bold text-slate-900">No matching schemes found</h3>
-            <p className="text-xs text-slate-500 max-w-sm mx-auto">
-              Try adjusting your search query or minimum match score.
+            <h3 className="text-xl font-bold text-[#0F172A]">No matching schemes found</h3>
+            <p className="text-xs text-[#64748B] max-w-sm mx-auto font-normal">
+              Try adjusting your search query or minimum match score filter.
             </p>
             <button
               onClick={() => {
@@ -265,7 +266,7 @@ export default function Schemes() {
                 setSelectedCategory("All");
                 setMinMatchScore(70);
               }}
-              className="px-4 py-2 bg-blue-50 text-blue-600 font-bold rounded-xl text-xs hover:bg-blue-100"
+              className="px-4 py-2 bg-[#DBEAFE] text-[#2563EB] font-bold rounded-[12px] text-xs hover:bg-blue-200 cursor-pointer min-h-[40px]"
             >
               Reset Filters
             </button>

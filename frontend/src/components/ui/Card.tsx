@@ -1,44 +1,58 @@
 import { type ReactNode } from "react";
+import { motion } from "framer-motion";
 
-interface CardProps {
+export interface CardProps {
   children: ReactNode;
   className?: string;
   hoverEffect?: boolean;
   glass?: boolean;
   padding?: "none" | "sm" | "md" | "lg" | "xl";
   onClick?: () => void;
+  tabIndex?: number;
+  role?: string;
+  ariaLabel?: string;
 }
 
 export default function Card({
   children,
   className = "",
   hoverEffect = false,
-  glass = true,
+  glass = false,
   padding = "lg",
   onClick,
+  tabIndex,
+  role,
+  ariaLabel,
 }: CardProps) {
   const paddings = {
     none: "p-0",
     sm: "p-4 sm:p-5",
-    md: "p-6 sm:p-7",
-    lg: "p-8 sm:p-10",
-    xl: "p-10 sm:p-12",
+    md: "p-5 sm:p-6",
+    lg: "p-6 sm:p-8",
+    xl: "p-8 sm:p-12",
   };
 
-  const glassStyle = glass
-    ? "bg-white/90 backdrop-blur-xl border border-slate-200/70 shadow-sm shadow-slate-200/50"
-    : "bg-white border border-slate-200/80 shadow-xs";
-
-  const hoverStyle = hoverEffect
-    ? "transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-500/5 hover:border-blue-300/80 cursor-pointer"
-    : "";
+  const baseStyle = glass
+    ? "bg-white/95 backdrop-blur-md border border-[#E2E8F0] shadow-soft"
+    : "bg-[#FFFFFF] border border-[#E2E8F0] shadow-soft";
 
   return (
-    <div
+    <motion.div
       onClick={onClick}
-      className={`rounded-3xl ${glassStyle} ${paddings[padding]} ${hoverStyle} ${className}`}
+      tabIndex={tabIndex}
+      role={role}
+      aria-label={ariaLabel}
+      whileHover={
+        hoverEffect
+          ? { y: -4, boxShadow: "0 16px 32px -4px rgba(15, 23, 42, 0.08)" }
+          : undefined
+      }
+      transition={{ duration: 0.2, ease: "easeOut" }}
+      className={`rounded-[20px] ${baseStyle} ${paddings[padding]} ${
+        hoverEffect ? "cursor-pointer transition-colors hover:border-blue-300" : ""
+      } ${className}`}
     >
       {children}
-    </div>
+    </motion.div>
   );
 }

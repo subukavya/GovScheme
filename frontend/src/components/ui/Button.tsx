@@ -1,7 +1,8 @@
 import { type ButtonHTMLAttributes, type ReactNode } from "react";
 import { Loader2 } from "lucide-react";
+import { motion } from "framer-motion";
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children?: ReactNode;
   text?: string;
   variant?: "primary" | "secondary" | "outline" | "ghost" | "danger" | "glass";
@@ -23,43 +24,46 @@ export default function Button({
   fullWidth = false,
   className = "",
   disabled,
+  onClick,
   ...props
 }: ButtonProps) {
   const baseStyles =
-    "inline-flex items-center justify-center font-semibold rounded-2xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-[0.98] disabled:opacity-60 disabled:pointer-events-none cursor-pointer tracking-tight";
+    "inline-flex items-center justify-center font-bold transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none cursor-pointer tracking-tight rounded-[16px]";
 
   const variants = {
     primary:
-      "bg-blue-600 hover:bg-blue-700 text-white shadow-md shadow-blue-600/15 focus:ring-blue-500 border border-transparent",
+      "bg-[#2563EB] hover:bg-blue-700 text-white shadow-md shadow-blue-600/20 active:bg-blue-800 border border-transparent",
     secondary:
-      "bg-slate-100 text-slate-800 hover:bg-slate-200/80 border border-slate-200/60 focus:ring-slate-400",
+      "bg-[#DBEAFE] text-[#2563EB] hover:bg-blue-200 border border-blue-200/80 active:bg-blue-300",
     outline:
-      "bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 shadow-xs focus:ring-slate-400",
+      "bg-white hover:bg-slate-50 text-[#0F172A] border border-[#E2E8F0] shadow-xs active:bg-slate-100",
     ghost:
-      "bg-transparent hover:bg-slate-100 text-slate-600 hover:text-slate-900 focus:ring-slate-300",
+      "bg-transparent hover:bg-slate-100 text-[#64748B] hover:text-[#0F172A] active:bg-slate-200/60",
     danger:
-      "bg-rose-600 hover:bg-rose-700 text-white shadow-md shadow-rose-600/15 focus:ring-rose-500",
+      "bg-[#EF4444] hover:bg-red-600 text-white shadow-md shadow-red-500/20 active:bg-red-700 border border-transparent",
     glass:
-      "bg-white/70 backdrop-blur-md hover:bg-white text-slate-800 border border-slate-200/80 shadow-xs focus:ring-blue-400",
+      "bg-white/80 backdrop-blur-md hover:bg-white text-[#0F172A] border border-[#E2E8F0] shadow-xs active:bg-slate-100",
   };
 
   const sizes = {
-    sm: "px-4 py-2 text-xs gap-1.5 rounded-xl",
-    md: "px-5 py-2.5 text-sm gap-2 rounded-2xl",
-    lg: "px-7 py-3.5 text-base gap-2.5 rounded-2xl font-bold",
+    sm: "min-h-[40px] px-4 py-2 text-xs gap-2 rounded-[14px]",
+    md: "min-h-[48px] px-6 py-3 text-sm gap-2.5 rounded-[16px]",
+    lg: "min-h-[54px] px-8 py-4 text-base gap-3 rounded-[20px]",
   };
 
   const widthStyle = fullWidth ? "w-full" : "";
 
   return (
-    <button
+    <motion.button
+      whileTap={{ scale: disabled || isLoading ? 1 : 0.98 }}
       className={`${baseStyles} ${variants[variant]} ${sizes[size]} ${widthStyle} ${className}`}
       disabled={disabled || isLoading}
-      {...props}
+      onClick={onClick}
+      {...(props as any)}
     >
       {isLoading ? (
         <>
-          <Loader2 className="animate-spin" size={size === "sm" ? 14 : size === "md" ? 18 : 20} />
+          <Loader2 className="animate-spin" size={size === "sm" ? 16 : size === "md" ? 18 : 20} />
           <span>Processing...</span>
         </>
       ) : (
@@ -69,6 +73,6 @@ export default function Button({
           {rightIcon && <span className="shrink-0">{rightIcon}</span>}
         </>
       )}
-    </button>
+    </motion.button>
   );
 }

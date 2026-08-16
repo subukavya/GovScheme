@@ -1,72 +1,55 @@
-import { CheckCircle2, ArrowRight, Building2, Gift } from "lucide-react";
+import { CheckCircle2, ArrowRight } from "lucide-react";
 import Card from "../ui/Card";
 import Badge from "../ui/Badge";
 import Button from "../ui/Button";
 import type { Scheme } from "../../types";
 
-interface SchemeCardProps {
+export interface SchemeCardProps {
   scheme: Scheme;
   onApply: (scheme: Scheme) => void;
   onViewDetails: (scheme: Scheme) => void;
 }
 
 export default function SchemeCard({ scheme, onApply, onViewDetails }: SchemeCardProps) {
+  const oneLineBenefit = scheme.benefits[0] || scheme.summary;
+
   return (
-    <Card hoverEffect glass padding="lg" className="flex flex-col h-full justify-between group">
-      <div>
-        {/* Top Badges Header */}
-        <div className="flex items-start justify-between gap-3 mb-4">
+    <Card
+      hoverEffect
+      padding="lg"
+      className="flex flex-col h-full justify-between group bg-white border border-[#E2E8F0] shadow-soft rounded-[20px]"
+    >
+      <div className="space-y-4">
+        {/* Top Badges: Eligibility Match & Category */}
+        <div className="flex items-center justify-between gap-3">
           <Badge matchPercentage={scheme.matchPercentage} />
           <Badge label={scheme.category} variant="category" />
         </div>
 
-        {/* Scheme Title & Ministry */}
-        <h3 className="text-xl font-bold text-slate-900 leading-snug group-hover:text-blue-600 transition-colors mb-2">
+        {/* Scheme Name */}
+        <h3 className="text-lg sm:text-xl font-bold text-[#0F172A] leading-snug group-hover:text-[#2563EB] transition-colors">
           {scheme.name}
         </h3>
-        
-        <div className="flex items-center gap-1.5 text-xs text-slate-500 font-medium mb-4">
-          <Building2 size={14} className="text-blue-500 shrink-0" />
-          <span className="truncate">{scheme.department}</span>
-        </div>
 
-        <p className="text-xs text-slate-600 leading-relaxed mb-5 line-clamp-2">
-          {scheme.summary}
-        </p>
-
-        {/* Benefits Section */}
-        <div className="bg-slate-50/80 rounded-2xl p-4 mb-6 border border-slate-100 space-y-2">
-          <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1 mb-2">
-            <Gift size={13} className="text-amber-500" />
-            Key Beneficiary Financial Benefits
-          </div>
-          {scheme.benefits.slice(0, 3).map((benefit, idx) => (
-            <div key={idx} className="flex items-start gap-2 text-xs font-semibold text-slate-800">
-              <CheckCircle2 size={15} className="text-emerald-500 shrink-0 mt-0.5" />
-              <span>{benefit}</span>
-            </div>
-          ))}
+        {/* One-Line Benefit */}
+        <div className="bg-[#F8FAFC] rounded-[14px] p-3.5 border border-[#E2E8F0] flex items-start gap-2.5">
+          <CheckCircle2 size={18} className="text-[#10B981] shrink-0 mt-0.5" />
+          <p className="text-xs font-semibold text-[#0F172A] leading-relaxed line-clamp-2">
+            {oneLineBenefit}
+          </p>
         </div>
       </div>
 
-      {/* Action Buttons Footer */}
-      <div className="pt-4 border-t border-slate-100 flex items-center gap-3">
+      {/* Action Button: View Details */}
+      <div className="pt-4 border-t border-[#E2E8F0] mt-6">
         <Button
           variant="outline"
           size="md"
-          onClick={() => onViewDetails(scheme)}
-          className="flex-1"
+          fullWidth
+          onClick={() => (onViewDetails ? onViewDetails(scheme) : onApply(scheme))}
+          rightIcon={<ArrowRight size={16} />}
         >
           View Details
-        </Button>
-        <Button
-          variant="primary"
-          size="md"
-          onClick={() => onApply(scheme)}
-          rightIcon={<ArrowRight size={16} />}
-          className="flex-1"
-        >
-          Apply Now
         </Button>
       </div>
     </Card>

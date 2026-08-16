@@ -1,6 +1,6 @@
 import { Sparkles, CheckCircle2, ShieldAlert } from "lucide-react";
 
-interface BadgeProps {
+export interface BadgeProps {
   matchPercentage?: number;
   label?: string;
   variant?: "match" | "category" | "status" | "gold" | "outline";
@@ -14,8 +14,8 @@ export default function Badge({
   size = "md",
 }: BadgeProps) {
   const sizeClasses = {
-    sm: "px-2.5 py-0.5 text-xs font-semibold rounded-md gap-1",
-    md: "px-3 py-1 text-xs font-bold rounded-lg gap-1.5",
+    sm: "px-2.5 py-1 text-xs font-semibold rounded-lg gap-1",
+    md: "px-3 py-1.5 text-xs font-bold rounded-xl gap-1.5",
   };
 
   if (matchPercentage !== undefined) {
@@ -26,30 +26,30 @@ export default function Badge({
       <span
         className={`inline-flex items-center ${sizeClasses[size]} ${
           isHigh
-            ? "bg-gradient-to-r from-emerald-500 to-teal-600 text-white shadow-sm shadow-emerald-500/20"
+            ? "bg-emerald-50 text-[#10B981] border border-emerald-200"
             : isMedium
-            ? "bg-gradient-to-r from-blue-500 to-indigo-600 text-white shadow-sm shadow-blue-500/20"
-            : "bg-amber-100 text-amber-800 border border-amber-300"
+            ? "bg-[#DBEAFE] text-[#2563EB] border border-blue-200"
+            : "bg-amber-50 text-[#F59E0B] border border-amber-200"
         }`}
       >
-        <Sparkles size={12} className={isHigh || isMedium ? "fill-white/80" : "text-amber-700"} />
+        <Sparkles size={13} className={isHigh ? "text-[#10B981]" : isMedium ? "text-[#2563EB]" : "text-[#F59E0B]"} />
         <span>{matchPercentage}% Match</span>
       </span>
     );
   }
 
   const variants: Record<string, string> = {
-    category: "bg-blue-50 text-blue-700 border border-blue-200/60 font-semibold",
-    status: "bg-emerald-50 text-emerald-700 border border-emerald-200/60 font-semibold",
-    gold: "bg-gradient-to-r from-amber-400 to-orange-500 text-slate-900 font-extrabold shadow-xs",
-    outline: "bg-slate-50 text-slate-600 border border-slate-200 font-medium",
-    match: "bg-blue-50 text-blue-700 border border-blue-200/60 font-semibold",
+    category: "bg-[#DBEAFE] text-[#2563EB] border border-blue-200/80 font-bold",
+    status: "bg-emerald-50 text-[#10B981] border border-emerald-200/80 font-bold",
+    gold: "bg-amber-50 text-[#F59E0B] border border-amber-200 font-bold",
+    outline: "bg-white text-[#64748B] border border-[#E2E8F0] font-medium",
+    match: "bg-[#DBEAFE] text-[#2563EB] border border-blue-200/80 font-bold",
   };
 
   return (
     <span className={`inline-flex items-center ${sizeClasses[size]} ${variants[variant] || variants.category}`}>
-      {variant === "status" && <CheckCircle2 size={12} className="text-emerald-600" />}
-      {variant === "gold" && <ShieldAlert size={12} className="text-slate-900" />}
+      {variant === "status" && <CheckCircle2 size={13} className="text-[#10B981]" />}
+      {variant === "gold" && <ShieldAlert size={13} className="text-[#F59E0B]" />}
       <span>{label}</span>
     </span>
   );
