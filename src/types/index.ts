@@ -1,6 +1,6 @@
 export type LanguageCode = 'en' | 'hi' | 'ta' | 'te' | 'kn' | 'ml' | 'mr' | 'gu' | 'pa' | 'bn';
 
-export type SchemeCategory = 
+export type SchemeCategory =
   | 'Agriculture & Farmers'
   | 'Health & Healthcare'
   | 'Housing & Shelter'
@@ -9,7 +9,8 @@ export type SchemeCategory =
   | 'Pensions & Senior Care'
   | 'Women & Child Welfare'
   | 'Employment & Micro Enterprises'
-  | 'Disability Empowerment';
+  | 'Disability Empowerment'
+  | 'Food & Nutrition';
 
 export type TargetGender = 'All' | 'Female' | 'Male' | 'Transgender';
 export type CategorySocial = 'All' | 'General' | 'OBC' | 'SC' | 'ST' | 'EWS' | 'Minority';

@@ -1,15 +1,15 @@
 import React from 'react';
-import { 
-  ShieldCheck, 
-  ScanLine, 
-  FileText, 
-  CheckCircle2, 
-  Clock, 
-  AlertTriangle, 
-  Trash2, 
-  Download, 
-  RefreshCw, 
-  Plus, 
+import {
+  ShieldCheck,
+  ScanLine,
+  FileText,
+  CheckCircle2,
+  Clock,
+  AlertTriangle,
+  Trash2,
+  Download,
+  RefreshCw,
+  Plus,
   Eye,
   Building2
 } from 'lucide-react';
@@ -67,9 +67,8 @@ export const DocumentVault: React.FC<DocumentVaultProps> = ({
           return (
             <div
               key={docType}
-              className={`gov-card p-6 flex flex-col justify-between space-y-4 ${
-                existingDoc ? 'border-l-4 border-l-emerald-500' : 'border-l-4 border-l-slate-300 dark:border-l-slate-700'
-              }`}
+              className={`gov-card p-6 flex flex-col justify-between space-y-4 ${existingDoc ? 'border-l-4 border-l-emerald-500' : 'border-l-4 border-l-slate-300 dark:border-l-slate-700'
+                }`}
             >
               <div className="space-y-3">
                 <div className="flex justify-between items-start gap-2">
@@ -97,7 +96,7 @@ export const DocumentVault: React.FC<DocumentVaultProps> = ({
                     {existingDoc.ocrExtracted && (
                       <div className="p-2.5 rounded-lg bg-blue-50/50 dark:bg-slate-900/80 border border-blue-100 dark:border-slate-800 text-[11px] space-y-1">
                         <span className="font-bold text-blue-900 dark:text-blue-300 block">OCR Extracted Metadata</span>
-                        {existingDoc.ocrExtracted.fullName && <p>Name: <strong>{existingDoc.ocrExtracted.fullName}</strong></p>}
+                        {existingDoc.ocrExtracted.name && <p>Name: <strong>{existingDoc.ocrExtracted.name}</strong></p>}
                         {existingDoc.ocrExtracted.annualIncome && <p>Income: <strong>₹{existingDoc.ocrExtracted.annualIncome.toLocaleString('en-IN')}</strong></p>}
                         <p className="text-[10px] text-slate-500">Confidence: {existingDoc.ocrExtracted.confidenceScore}%</p>
                       </div>

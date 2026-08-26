@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { 
-  X, 
-  UploadCloud, 
-  ScanLine, 
-  CheckCircle2, 
-  AlertTriangle, 
-  FileText, 
-  Save, 
-  Edit3, 
+import {
+  X,
+  UploadCloud,
+  ScanLine,
+  CheckCircle2,
+  AlertTriangle,
+  FileText,
+  Save,
+  Edit3,
   Sparkles,
   ArrowRight
 } from 'lucide-react';
@@ -70,7 +70,7 @@ export const OCRScanner: React.FC<OCRScannerProps> = ({
       status: scanResult.isValidDocType ? 'Verified' : 'Pending',
       ocrExtracted: {
         ...scanResult.extractedFields,
-        fullName: editableName || scanResult.extractedFields.fullName,
+        name: editableName || scanResult.extractedFields.fullName,
         annualIncome: editableIncome !== undefined ? editableIncome : scanResult.extractedFields.annualIncome
       },
       uploadedAt: new Date().toISOString().split('T')[0]
@@ -154,11 +154,10 @@ export const OCRScanner: React.FC<OCRScannerProps> = ({
           {scanResult && !isScanning && (
             <div className="space-y-4">
               {/* Type Warning / Verification Badge */}
-              <div className={`p-4 rounded-xl border flex items-center gap-3 ${
-                scanResult.isValidDocType
+              <div className={`p-4 rounded-xl border flex items-center gap-3 ${scanResult.isValidDocType
                   ? 'bg-emerald-50 dark:bg-emerald-950/40 border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300'
                   : 'bg-amber-50 dark:bg-amber-950/40 border-amber-200 dark:border-amber-800 text-amber-800 dark:text-amber-300'
-              }`}>
+                }`}>
                 {scanResult.isValidDocType ? <CheckCircle2 className="w-5 h-5 text-emerald-600" /> : <AlertTriangle className="w-5 h-5 text-amber-600" />}
                 <div>
                   <span className="font-bold block">{scanResult.detectedTypeLabel}</span>

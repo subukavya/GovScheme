@@ -29,7 +29,7 @@ export const initialUserProfile: UserProfile = {
       docNumber: "5489 3201 9845",
       status: "Verified",
       ocrExtracted: {
-        fullName: "Ramesh Kumar",
+        name: "Ramesh Kumar",
         dob: "1984-05-12",
         state: "Tamil Nadu",
         gender: "Male",
@@ -43,7 +43,7 @@ export const initialUserProfile: UserProfile = {
       docNumber: "ABCDE1234F",
       status: "Verified",
       ocrExtracted: {
-        fullName: "RAMESH KUMAR",
+        name: "RAMESH KUMAR",
         dob: "1984-05-12",
         confidenceScore: 95,
       },
@@ -55,7 +55,7 @@ export const initialUserProfile: UserProfile = {
       docNumber: "TN-INC-2026-98124",
       status: "Verified",
       ocrExtracted: {
-        fullName: "Ramesh Kumar",
+        name: "Ramesh Kumar",
         annualIncome: 95000,
         state: "Tamil Nadu",
         confidenceScore: 92,
@@ -117,13 +117,15 @@ export const initialNotifications: NotificationItem[] = [
     title: "New State Welfare Scheme Added",
     description: "Tamil Nadu Pudhumai Penn Scheme updated with new monthly incentives.",
     category: "Scheme",
-    timestamp: "1 day ago"
+    timestamp: "1 day ago",
+    read: false,
   },
   {
     id: "notif-3",
     title: "Income Certificate Verification Completed",
     description: "Your OCR uploaded Income Certificate has been verified by the Rule Engine.",
     category: "Document",
-    timestamp: "3 days ago"
+    timestamp: "3 days ago",
+    read: false,
   }
 ];

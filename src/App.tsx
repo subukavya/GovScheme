@@ -28,7 +28,12 @@ export const App: React.FC = () => {
   const [activeTab, setActiveTab] = useState<string>('home');
 
   // User & Data State
-  const [user, setUser] = useState<UserProfile | null>(initialUserProfile);
+  const [user, setUser] = useState<UserProfile | null>(() => {
+    try {
+      const saved = localStorage.getItem('govscheme_user');
+      return saved ? JSON.parse(saved) : null;
+    } catch { return null; }
+  });
   const [schemes, setSchemes] = useState<Scheme[]>(schemesData);
   const [applications, setApplications] = useState<ApplicationTrackerRecord[]>(initialApplications);
   const [notifications, setNotifications] = useState<NotificationItem[]>(initialNotifications);
@@ -45,7 +50,7 @@ export const App: React.FC = () => {
   useEffect(() => {
     const root = document.documentElement;
     root.classList.remove('dark', 'high-contrast', 'text-size-large', 'text-size-xlarge');
-    
+
     if (theme === 'dark') {
       root.classList.add('dark');
     } else if (theme === 'high-contrast') {
@@ -58,6 +63,20 @@ export const App: React.FC = () => {
       root.classList.add('text-size-xlarge');
     }
   }, [theme, textSize]);
+
+  // Save user to localStorage whenever it changes
+  useEffect(() => {
+    if (user) {
+      localStorage.setItem('govscheme_user', JSON.stringify(user));
+    }
+  }, [user]);
+
+  // Logout handler
+  const handleLogout = () => {
+    localStorage.removeItem('govscheme_user');
+    setUser(null);
+    setActiveTab('home');
+  };
 
   // Compute eligible schemes count for the user
   const eligibleSchemesCount = schemes.filter(scheme => {
@@ -195,6 +214,7 @@ export const App: React.FC = () => {
         setTextSize={setTextSize}
         user={user}
         onOpenAuth={() => setIsAuthOpen(true)}
+        onLogout={handleLogout}
         unreadCount={notifications.filter(n => !n.read).length}
         onOpenNotifications={() => setIsNotificationsOpen(true)}
         onStartVoiceCommand={handleStartVoiceCommand}
@@ -296,8 +316,12 @@ export const App: React.FC = () => {
       <AuthModal
         isOpen={isAuthOpen}
         onClose={() => setIsAuthOpen(false)}
-        onLoginSuccess={(loggedInUser) => setUser(loggedInUser)}
-        onContinueGuest={() => setUser(initialUserProfile)}
+        onLoginSuccess={(loggedInUser) => {
+          setUser(loggedInUser);
+          localStorage.setItem('govscheme_user', JSON.stringify(loggedInUser));
+        }}
+        onContinueGuest={() => setUser(null)}
+        currentLang={currentLang}
       />
 
       {/* Notifications Modal */}

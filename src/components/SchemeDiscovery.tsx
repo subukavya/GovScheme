@@ -1,16 +1,16 @@
 import React, { useState, useMemo } from 'react';
-import { 
-  Search, 
-  Filter, 
-  Sparkles, 
-  Building2, 
-  CheckCircle2, 
-  AlertCircle, 
-  XCircle, 
-  Bookmark, 
-  ChevronRight, 
-  ExternalLink, 
-  SlidersHorizontal, 
+import {
+  Search,
+  Filter,
+  Sparkles,
+  Building2,
+  CheckCircle2,
+  AlertCircle,
+  XCircle,
+  Bookmark,
+  ChevronRight,
+  ExternalLink,
+  SlidersHorizontal,
   RefreshCw,
   Info,
   ShieldAlert
@@ -44,6 +44,7 @@ export const SchemeDiscovery: React.FC<SchemeDiscoveryProps> = ({
   const [selectedStateFilter, setSelectedStateFilter] = useState<string>('All');
   const [selectedCategoryFilter, setSelectedCategoryFilter] = useState<string>('All');
   const [selectedOccupationFilter, setSelectedOccupationFilter] = useState<string>('All');
+  const [selectedIncomeFilter, setSelectedIncomeFilter] = useState<string>('All');
 
   // Compute Rule + ML analysis for all schemes
   const analyzedSchemes: CombinedSchemeAnalysis[] = useMemo(() => {
@@ -107,10 +108,18 @@ export const SchemeDiscovery: React.FC<SchemeDiscoveryProps> = ({
           if (!occs.some(o => o.toLowerCase().includes(selectedOccupationFilter.toLowerCase()))) return false;
         }
 
+        // Income Range Filter
+        if (selectedIncomeFilter !== 'All') {
+          const maxInc = scheme.eligibilityRules.maxAnnualIncome;
+          if (selectedIncomeFilter === 'bpl' && (!maxInc || maxInc > 120000)) return false;
+          if (selectedIncomeFilter === '2.5l' && (!maxInc || maxInc > 250000)) return false;
+          if (selectedIncomeFilter === '5l' && (!maxInc || maxInc > 500000)) return false;
+        }
+
         return true;
       })
       .sort((a, b) => b.mlResult.confidenceScore - a.mlResult.confidenceScore);
-  }, [analyzedSchemes, searchQuery, activeCategoryTab, selectedStateFilter, selectedCategoryFilter, selectedOccupationFilter, isBookmarked]);
+  }, [analyzedSchemes, searchQuery, activeCategoryTab, selectedStateFilter, selectedCategoryFilter, selectedOccupationFilter, selectedIncomeFilter, isBookmarked]);
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-8 py-8 space-y-8">
@@ -160,16 +169,14 @@ export const SchemeDiscovery: React.FC<SchemeDiscoveryProps> = ({
           <button
             key={tab.id}
             onClick={() => setActiveCategoryTab(tab.id as any)}
-            className={`px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1.5 ${
-              activeCategoryTab === tab.id
-                ? 'bg-blue-700 text-white shadow-md'
-                : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'
-            }`}
+            className={`px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1.5 ${activeCategoryTab === tab.id
+              ? 'bg-blue-700 text-white shadow-md'
+              : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'
+              }`}
           >
             <span>{tab.label}</span>
-            <span className={`px-1.5 py-0.2 rounded-full text-[10px] ${
-              activeCategoryTab === tab.id ? 'bg-blue-900 text-white' : 'bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300'
-            }`}>
+            <span className={`px-1.5 py-0.2 rounded-full text-[10px] ${activeCategoryTab === tab.id ? 'bg-blue-900 text-white' : 'bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300'
+              }`}>
               {tab.count}
             </span>
           </button>
@@ -206,12 +213,25 @@ export const SchemeDiscovery: React.FC<SchemeDiscoveryProps> = ({
           ))}
         </select>
 
+        {/* Income Range Filter */}
+        <select
+          value={selectedIncomeFilter}
+          onChange={(e) => setSelectedIncomeFilter(e.target.value)}
+          className="px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium focus:ring-2 focus:ring-blue-600 outline-none"
+        >
+          <option value="All">Income: Any</option>
+          <option value="bpl">BPL (below ₹1.2L)</option>
+          <option value="2.5l">Below ₹2.5 Lakh</option>
+          <option value="5l">Below ₹5 Lakh</option>
+        </select>
+
         {/* Reset Filters */}
-        {(selectedStateFilter !== 'All' || selectedCategoryFilter !== 'All' || searchQuery !== '') && (
+        {(selectedStateFilter !== 'All' || selectedCategoryFilter !== 'All' || selectedIncomeFilter !== 'All' || searchQuery !== '') && (
           <button
             onClick={() => {
               setSelectedStateFilter('All');
               setSelectedCategoryFilter('All');
+              setSelectedIncomeFilter('All');
               setSearchQuery('');
             }}
             className="text-red-600 dark:text-red-400 font-bold hover:underline ml-auto flex items-center gap-1"
@@ -293,12 +313,24 @@ export const SchemeDiscovery: React.FC<SchemeDiscoveryProps> = ({
                     </button>
                   </div>
 
-                  {/* ML Match Confidence Score */}
-                  <div className="flex items-center justify-between text-xs bg-blue-50/50 dark:bg-slate-900/60 p-2 rounded-lg border border-blue-100 dark:border-slate-800">
-                    <span className="text-slate-600 dark:text-slate-400 font-medium">AI Match Confidence</span>
-                    <span className="font-extrabold text-blue-700 dark:text-blue-400 font-heading text-sm">
-                      {mlResult.confidenceScore}% Score
-                    </span>
+                  {/* ML Match Confidence Score - Progress Bar */}
+                  <div className="space-y-1">
+                    <div className="flex items-center justify-between text-xs">
+                      <span className="text-slate-500 dark:text-slate-400 font-medium">AI Match Confidence</span>
+                      <span className={`font-extrabold text-sm font-heading ${mlResult.confidenceScore >= 75 ? 'text-emerald-600 dark:text-emerald-400' :
+                          mlResult.confidenceScore >= 50 ? 'text-amber-600 dark:text-amber-400' :
+                            'text-slate-500 dark:text-slate-400'
+                        }`}>{mlResult.confidenceScore}%</span>
+                    </div>
+                    <div className="w-full h-1.5 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+                      <div
+                        className={`h-full rounded-full transition-all duration-700 ${mlResult.confidenceScore >= 75 ? 'bg-emerald-500' :
+                            mlResult.confidenceScore >= 50 ? 'bg-amber-500' :
+                              'bg-slate-400'
+                          }`}
+                        style={{ width: `${mlResult.confidenceScore}%` }}
+                      />
+                    </div>
                   </div>
 
                   {/* Scheme Name */}

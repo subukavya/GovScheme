@@ -669,5 +669,244 @@ export const schemesData: Scheme[] = [
     ],
     lastUpdated: "2026-05-30",
     popularityScore: 87
+  },
+  {
+    id: "pm-fasal-bima",
+    name: "Pradhan Mantri Fasal Bima Yojana (PMFBY)",
+    shortDescription: "Comprehensive crop insurance scheme providing financial support to farmers suffering crop loss from natural calamities, pests, and diseases.",
+    department: "Department of Agriculture & Farmers Welfare",
+    ministry: "Ministry of Agriculture & Farmers Welfare",
+    category: "Agriculture & Farmers",
+    state: "Central",
+    benefitsSummary: "Full coverage of sum insured for crop loss due to natural calamities. Farmers pay 2% premium for Kharif, 1.5% for Rabi, and 5% for commercial/horticultural crops.",
+    financialBenefitAmount: 200000,
+    eligibilityRules: {
+      allowedOccupations: ["Farmer", "Agriculture Worker", "Self Employed Farmer"],
+      requiredDocuments: ["Aadhaar", "Land Record (Khata/Khasra)", "Bank Passbook"],
+      allowedCategories: ["General", "OBC", "SC", "ST", "EWS"],
+    },
+    requiredDocuments: [
+      "Aadhaar Card",
+      "Land Record / Khasra Khatauni",
+      "Bank Account Passbook",
+      "Sowing Certificate from Patwari"
+    ],
+    applicationSteps: [
+      "Visit pmfby.gov.in or nearest bank/CSC to enroll before sowing season.",
+      "Select crop, sowing season, and enter land details.",
+      "Pay nominal premium amount (2% for Kharif crops).",
+      "In case of crop loss, file intimation within 72 hours via Crop Insurance App or helpline."
+    ],
+    officialApplyUrl: "https://pmfby.gov.in/",
+    officialWebsite: "https://pmfby.gov.in/",
+    helplineNumber: "1800-180-1111",
+    deadline: "Before Kharif/Rabi Sowing",
+    tags: ["Crop Insurance", "Farmer", "PMFBY", "Natural Calamity"],
+    faqs: [
+      {
+        question: "What crops are covered under PMFBY?",
+        answer: "All food crops (cereals, millets, pulses), oilseeds, and annual commercial/horticultural crops are covered."
+      }
+    ],
+    lastUpdated: "2026-08-10",
+    popularityScore: 93
+  },
+  {
+    id: "atal-pension-yojana",
+    name: "Atal Pension Yojana (APY)",
+    shortDescription: "Government-backed pension scheme for unorganized sector workers guaranteeing fixed monthly pension of ₹1,000 to ₹5,000 after age 60.",
+    department: "Pension Fund Regulatory and Development Authority (PFRDA)",
+    ministry: "Ministry of Finance",
+    category: "Pensions & Senior Care",
+    state: "Central",
+    benefitsSummary: "Guaranteed monthly pension of ₹1,000 / ₹2,000 / ₹3,000 / ₹4,000 / ₹5,000 depending on contribution amount and age of entry. Government co-contributes 50% for eligible subscribers.",
+    financialBenefitAmount: 60000,
+    eligibilityRules: {
+      minAge: 18,
+      maxAge: 40,
+      requiredDocuments: ["Aadhaar", "Bank Passbook"],
+    },
+    requiredDocuments: [
+      "Aadhaar Card",
+      "Bank Account (Aadhaar-seeded Savings Account)",
+      "Mobile Number"
+    ],
+    applicationSteps: [
+      "Visit any bank branch or apply via netbanking / mobile banking.",
+      "Fill APY subscriber registration form with Aadhaar and bank details.",
+      "Select desired monthly pension amount (₹1,000 - ₹5,000).",
+      "Auto-debit of monthly contribution starts from savings account."
+    ],
+    officialApplyUrl: "https://npscra.nsdl.co.in/scheme-details.php",
+    officialWebsite: "https://www.npscra.nsdl.co.in/",
+    helplineNumber: "1800-110-069",
+    deadline: "Open All Year",
+    tags: ["Pension", "APY", "Unorganized Workers", "Retirement"],
+    faqs: [
+      {
+        question: "Can I have both APY and NPS?",
+        answer: "Yes, APY and NPS are independent schemes. Citizens can subscribe to both simultaneously."
+      }
+    ],
+    lastUpdated: "2026-07-01",
+    popularityScore: 88
+  },
+  {
+    id: "pm-jan-dhan",
+    name: "Pradhan Mantri Jan Dhan Yojana (PMJDY)",
+    shortDescription: "Financial inclusion mission to provide universal access to basic banking, remittance, credit, insurance, and pension facilities for the unbanked.",
+    department: "Department of Financial Services",
+    ministry: "Ministry of Finance",
+    category: "Financial Inclusion & Credit",
+    state: "Central",
+    benefitsSummary: "Free zero-balance savings account + RuPay debit card + ₹2 Lakh accident insurance + ₹30,000 life cover + ₹10,000 overdraft facility after 6 months.",
+    financialBenefitAmount: 230000,
+    eligibilityRules: {
+      minAge: 10,
+      requiredDocuments: ["Aadhaar", "Bank Passbook"],
+    },
+    requiredDocuments: [
+      "Aadhaar Card",
+      "Address Proof (if address differs from Aadhaar)",
+      "Passport size photograph"
+    ],
+    applicationSteps: [
+      "Visit any nationalized bank, RRB, or Bank Mitra (Business Correspondent).",
+      "Fill PMJDY account opening form with Aadhaar eKYC.",
+      "Get zero-balance savings account opened instantly.",
+      "Receive free RuPay Debit Card with ₹2 Lakh accidental insurance."
+    ],
+    officialApplyUrl: "https://pmjdy.gov.in/",
+    officialWebsite: "https://pmjdy.gov.in/",
+    helplineNumber: "1800-11-0001",
+    deadline: "Open All Year",
+    tags: ["Jan Dhan", "Bank Account", "Financial Inclusion", "RuPay"],
+    faqs: [
+      {
+        question: "Is a minimum balance required to maintain the PMJDY account?",
+        answer: "No, PMJDY accounts are zero-balance accounts. No minimum balance is required."
+      }
+    ],
+    lastUpdated: "2026-08-15",
+    popularityScore: 96
+  },
+  {
+    id: "startup-india-seed-fund",
+    name: "Startup India Seed Fund Scheme (SISFS)",
+    shortDescription: "Financial assistance of up to ₹20 Lakh (PoC grant) and up to ₹50 Lakh (investment at convertible debenture) for early-stage Indian startups.",
+    department: "Startup India Division, DPIIT",
+    ministry: "Ministry of Commerce and Industry",
+    category: "Employment & Micro Enterprises",
+    state: "Central",
+    benefitsSummary: "Grant of up to ₹20 Lakh for PoC/prototype, and investment up to ₹50 Lakh for market entry & commercialization via empanelled incubators.",
+    financialBenefitAmount: 5000000,
+    eligibilityRules: {
+      minAge: 18,
+      allowedOccupations: ["Entrepreneur", "Self Employed", "Micro Entrepreneur", "Small Business Owner"],
+      requiredDocuments: ["Aadhaar", "PAN", "Bank Passbook"],
+    },
+    requiredDocuments: [
+      "Startup India Registration (DIPP Certificate)",
+      "Aadhaar & PAN of Founders",
+      "Business Plan / Pitch Deck",
+      "Bank Account Details"
+    ],
+    applicationSteps: [
+      "Register on Startup India Portal (startupindia.gov.in) and get DIPP recognition.",
+      "Apply to empanelled incubators under SISFS via the portal.",
+      "Submit detailed business plan, product demo, and financial projections.",
+      "Incubator evaluates and disburses seed funding in tranches."
+    ],
+    officialApplyUrl: "https://seedfund.startupindia.gov.in/",
+    officialWebsite: "https://seedfund.startupindia.gov.in/",
+    helplineNumber: "1800-115-565",
+    deadline: "Open All Year (Rolling Basis)",
+    tags: ["Startup", "Seed Fund", "Innovation", "Entrepreneurship", "DPIIT"],
+    faqs: [
+      {
+        question: "What stage of startup can apply for SISFS?",
+        answer: "Startups with a business idea or product at ideation/validation/early traction stage with less than 2 years of incorporation can apply."
+      }
+    ],
+    lastUpdated: "2026-08-01",
+    popularityScore: 85
+  },
+  {
+    id: "pm-garib-kalyan-anna",
+    name: "Pradhan Mantri Garib Kalyan Anna Yojana (PMGKAY)",
+    shortDescription: "Free food grain distribution scheme providing 5 kg of wheat/rice per person per month to 81 Crore National Food Security Act beneficiaries.",
+    department: "Department of Food and Public Distribution",
+    ministry: "Ministry of Consumer Affairs, Food and Public Distribution",
+    category: "Food & Nutrition",
+    state: "Central",
+    benefitsSummary: "5 kg free food grain (wheat/rice) per person per month through Ration Card at Fair Price Shops under NFSA.",
+    financialBenefitAmount: 6000,
+    eligibilityRules: {
+      maxAnnualIncome: 200000,
+      requiredDocuments: ["Aadhaar", "Ration Card"],
+    },
+    requiredDocuments: [
+      "Aadhaar Card (linked to Ration Card)",
+      "NFSA Ration Card (PHH / AAY)"
+    ],
+    applicationSteps: [
+      "Ensure NFSA Ration Card is issued by State Food Department.",
+      "Link Aadhaar to Ration Card at nearest Fair Price Shop or CSC.",
+      "Collect free food grains monthly from designated Fair Price Shop."
+    ],
+    officialApplyUrl: "https://nfsa.gov.in/",
+    officialWebsite: "https://nfsa.gov.in/",
+    helplineNumber: "14445",
+    deadline: "Open All Year",
+    tags: ["Food Security", "Ration Card", "PMGKAY", "Free Food Grains", "NFSA"],
+    faqs: [
+      {
+        question: "Who is covered under PMGKAY?",
+        answer: "All NFSA beneficiaries (PHH and AAY ration card holders) covering approximately 81 Crore persons are eligible."
+      }
+    ],
+    lastUpdated: "2026-08-20",
+    popularityScore: 98
+  },
+  {
+    id: "udid-disability-scheme",
+    name: "Unique Disability ID (UDID) & Divyangjan Welfare Schemes",
+    shortDescription: "Centralized disability registration and ID card scheme enabling Divyangjan to access all disability benefits, concessions, and welfare schemes seamlessly.",
+    department: "Department of Empowerment of Persons with Disabilities (DEPwD)",
+    ministry: "Ministry of Social Justice and Empowerment",
+    category: "Disability Empowerment",
+    state: "Central",
+    benefitsSummary: "UDID Card enables: 3% reservation in govt jobs, 5% reservation in govt housing, income tax benefits (₹75,000 - ₹1,25,000 deduction under Sec 80U), free railway travel concession, and free/subsidized assistive devices.",
+    financialBenefitAmount: 125000,
+    eligibilityRules: {
+      requiresDisability: true,
+      minDisabilityPercentage: 40,
+      requiredDocuments: ["Aadhaar", "Disability Certificate (UDID)"],
+    },
+    requiredDocuments: [
+      "Aadhaar Card",
+      "Medical Certificate from Govt Hospital (showing 40%+ disability)",
+      "Passport size photographs",
+      "Address Proof"
+    ],
+    applicationSteps: [
+      "Visit swavlambancard.gov.in or nearest District Disability Rehabilitation Centre (DDRC).",
+      "Fill UDID application with Aadhaar details and disability information.",
+      "Medical assessment by Govt hospital's Medical Board.",
+      "UDID card issued with QR code for seamless scheme access."
+    ],
+    officialApplyUrl: "https://swavlambancard.gov.in/",
+    officialWebsite: "https://swavlambancard.gov.in/",
+    helplineNumber: "1800-11-4515",
+    deadline: "Open All Year",
+    tags: ["Disability", "UDID", "Divyangjan", "Reservation", "Assistive Device"],
+    faqs: [
+      {
+        question: "What is the minimum disability percentage to get UDID?",
+        answer: "A minimum of 40% disability as assessed by a government Medical Authority is required to obtain UDID card."
+      }
+    ],
+    lastUpdated: "2026-07-20",
+    popularityScore: 86
   }
 ];

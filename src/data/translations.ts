@@ -51,6 +51,34 @@ export interface TranslationDict {
   scanOCR: string;
   voiceAssistant: string;
   listenVoice: string;
+  // Auth & User
+  login: string;
+  logout: string;
+  register: string;
+  guestMode: string;
+  loginOrGuest: string;
+  yourName: string;
+  mobileNumber: string;
+  yourState: string;
+  yourOccupation: string;
+  annualIncomeLabel: string;
+  yourAge: string;
+  // OCR
+  scanDocument: string;
+  extractingOCR: string;
+  saveToVault: string;
+  reviewExtracted: string;
+  // Stats
+  beneficiariesStat: string;
+  disbursedStat: string;
+  activeSchemesStat: string;
+  statesCoveredStat: string;
+  nationalImpact: string;
+  // Filters
+  incomeFilterAny: string;
+  incomeFilterBPL: string;
+  incomeFilter2L: string;
+  incomeFilter5L: string;
 }
 
 export const languages: { code: LanguageCode; name: string; nativeName: string }[] = [
@@ -118,6 +146,30 @@ export const translations: Record<LanguageCode, TranslationDict> = {
     scanOCR: "OCR Scanner",
     voiceAssistant: "Voice Assistant",
     listenVoice: "Speak to search schemes...",
+    login: "Login",
+    logout: "Logout",
+    register: "Register",
+    guestMode: "Continue as Guest",
+    loginOrGuest: "Login / Guest",
+    yourName: "Your Full Name",
+    mobileNumber: "Mobile Number",
+    yourState: "Your State",
+    yourOccupation: "Your Occupation",
+    annualIncomeLabel: "Annual Income (₹)",
+    yourAge: "Your Age",
+    scanDocument: "Scan Document",
+    extractingOCR: "AI Extracting Text...",
+    saveToVault: "Save & Auto-Fill Profile",
+    reviewExtracted: "Review Extracted Information",
+    beneficiariesStat: "Beneficiaries Reached",
+    disbursedStat: "Benefits Disbursed",
+    activeSchemesStat: "Active Schemes",
+    statesCoveredStat: "States Covered",
+    nationalImpact: "National Impact in Numbers",
+    incomeFilterAny: "Income: Any",
+    incomeFilterBPL: "BPL (below ₹1.2L)",
+    incomeFilter2L: "Below ₹2.5 Lakh",
+    incomeFilter5L: "Below ₹5 Lakh",
   },
   hi: {
     appName: "GovScheme AI",
@@ -170,6 +222,30 @@ export const translations: Record<LanguageCode, TranslationDict> = {
     scanOCR: "OCR स्कैनर",
     voiceAssistant: "आवाज़ सहायक",
     listenVoice: "योजनाओं को खोजने के लिए बोलें...",
+    login: "लॉगिन",
+    logout: "लॉगआउट",
+    register: "पंजीकरण",
+    guestMode: "अतिथि के रूप में जारी रखें",
+    loginOrGuest: "लॉगिन / अतिथि",
+    yourName: "आपका पूरा नाम",
+    mobileNumber: "मोबाइल नंबर",
+    yourState: "आपका राज्य",
+    yourOccupation: "आपका व्यवसाय",
+    annualIncomeLabel: "वार्षिक आय (₹)",
+    yourAge: "आपकी आयु",
+    scanDocument: "दस्तावेज़ स्कैन करें",
+    extractingOCR: "AI पाठ निकाल रहा है...",
+    saveToVault: "सहेजें और प्रोफ़ाइल भरें",
+    reviewExtracted: "निकाली गई जानकारी की समीक्षा करें",
+    beneficiariesStat: "लाभार्थी पहुँचे",
+    disbursedStat: "लाभ वितरित",
+    activeSchemesStat: "सक्रिय योजनाएं",
+    statesCoveredStat: "राज्य शामिल",
+    nationalImpact: "संख्याओं में राष्ट्रीय प्रभाव",
+    incomeFilterAny: "आय: कोई भी",
+    incomeFilterBPL: "BPL (₹1.2L से कम)",
+    incomeFilter2L: "₹2.5 लाख से कम",
+    incomeFilter5L: "₹5 लाख से कम",
   },
   ta: {
     appName: "GovScheme AI",
@@ -222,6 +298,30 @@ export const translations: Record<LanguageCode, TranslationDict> = {
     scanOCR: "OCR ஸ்கேனர்",
     voiceAssistant: "குரல் உதவியாளர்",
     listenVoice: "திட்டங்களைத் தேட பேசுங்கள்...",
+    login: "உள்நுழைவு",
+    logout: "வெளியேறு",
+    register: "பதிவு செய்",
+    guestMode: "விருந்தினராக தொடரவும்",
+    loginOrGuest: "உள்நுழைவு / விருந்தினர்",
+    yourName: "உங்கள் முழு பெயர்",
+    mobileNumber: "மொபைல் எண்",
+    yourState: "உங்கள் மாநிலம்",
+    yourOccupation: "உங்கள் தொழில்",
+    annualIncomeLabel: "வருடாந்திர வருமானம் (₹)",
+    yourAge: "உங்கள் வயது",
+    scanDocument: "ஆவணத்தை ஸ்கேன் செய்",
+    extractingOCR: "AI உரையை பிரித்தெடுக்கிறது...",
+    saveToVault: "சேமி & சுயவிவரம் நிரப்பு",
+    reviewExtracted: "பிரித்தெடுத்த தகவலை மதிப்பாய்வு செய்",
+    beneficiariesStat: "பயனாளிகள் அடைந்தனர்",
+    disbursedStat: "நலன்கள் வழங்கப்பட்டன",
+    activeSchemesStat: "செயலில் உள்ள திட்டங்கள்",
+    statesCoveredStat: "மாநிலங்கள் உள்ளடக்கப்பட்டன",
+    nationalImpact: "எண்களில் தேசிய தாக்கம்",
+    incomeFilterAny: "வருமானம்: எதுவும்",
+    incomeFilterBPL: "BPL (₹1.2L க்கும் கீழ்)",
+    incomeFilter2L: "₹2.5 லட்சத்திற்கும் கீழ்",
+    incomeFilter5L: "₹5 லட்சத்திற்கும் கீழ்",
   },
   te: {
     appName: "GovScheme AI",
@@ -274,6 +374,7 @@ export const translations: Record<LanguageCode, TranslationDict> = {
     scanOCR: "OCR స్కేనర్",
     voiceAssistant: "వాయిస్ అసిస్టెంట్",
     listenVoice: "శోధించడానికి మాట్లాడండి...",
+    login: "లాగిన్", logout: "లాగ్ అవుట్", register: "నమోదు", guestMode: "అతిథిగా కొనసాగండి", loginOrGuest: "లాగిన్ / అతిథి", yourName: "మీ పూర్తి పేరు", mobileNumber: "మొబైల్ నంబర్", yourState: "మీ రాష్ట్రం", yourOccupation: "మీ వృత్తి", annualIncomeLabel: "వార్షిక ఆదాయం (₹)", yourAge: "మీ వయసు", scanDocument: "పత్రాన్ని స్కాన్ చేయండి", extractingOCR: "AI టెక్స్ట్ వెలికితీస్తోంది...", saveToVault: "సేవ్ & ప్రొఫైల్ పూరించు", reviewExtracted: "వెలికితీసిన సమాచారాన్ని సమీక్షించండి", beneficiariesStat: "లబ్ధిదారులు చేరుకున్నారు", disbursedStat: "ప్రయోజనాలు పంపిణీ", activeSchemesStat: "చురుకైన పథకాలు", statesCoveredStat: "రాష్ట్రాలు కవర్", nationalImpact: "సంఖ్యల్లో జాతీయ ప్రభావం", incomeFilterAny: "ఆదాయం: ఏదైనా", incomeFilterBPL: "BPL (₹1.2L కింద)", incomeFilter2L: "₹2.5 లక్షల కంటే తక్కువ", incomeFilter5L: "₹5 లక్షల కంటే తక్కువ",
   },
   kn: {
     appName: "GovScheme AI",
@@ -326,6 +427,7 @@ export const translations: Record<LanguageCode, TranslationDict> = {
     scanOCR: "OCR ಸ್ಕ್ಯಾನರ್",
     voiceAssistant: "ವಾಯ್ಸ್ ಅಸಿಸ್ಟೆಂಟ್",
     listenVoice: "ಹುಡುಕಲು ಮಾತನಾಡಿ...",
+    login: "ಲಾಗಿನ್", logout: "ಲಾಗ್ ಔಟ್", register: "ನೋಂದಣಿ", guestMode: "ಅತಿಥಿಯಾಗಿ ಮುಂದುವರಿಯಿರಿ", loginOrGuest: "ಲಾಗಿನ್ / ಅತಿಥಿ", yourName: "ನಿಮ್ಮ ಪೂರ್ಣ ಹೆಸರು", mobileNumber: "ಮೊಬೈಲ್ ಸಂಖ್ಯೆ", yourState: "ನಿಮ್ಮ ರಾಜ್ಯ", yourOccupation: "ನಿಮ್ಮ ವೃತ್ತಿ", annualIncomeLabel: "ವಾರ್ಷಿಕ ಆದಾಯ (₹)", yourAge: "ನಿಮ್ಮ ವಯಸ್ಸು", scanDocument: "ದಾಖಲೆ ಸ್ಕ್ಯಾನ್ ಮಾಡಿ", extractingOCR: "AI ಪಠ್ಯ ಹೊರತೆಗೆಯುತ್ತಿದೆ...", saveToVault: "ಉಳಿಸಿ & ಪ್ರೊಫೈಲ್ ತುಂಬಿಸಿ", reviewExtracted: "ಹೊರತೆಗೆದ ಮಾಹಿತಿಯನ್ನು ಪರಿಶೀಲಿಸಿ", beneficiariesStat: "ಫಲಾನುಭವಿಗಳು ತಲುಪಿದ್ದಾರೆ", disbursedStat: "ಪ್ರಯೋಜನಗಳ ವಿತರಣೆ", activeSchemesStat: "ಸಕ್ರಿಯ ಯೋಜನೆಗಳು", statesCoveredStat: "ರಾಜ್ಯಗಳು ಒಳಗೊಂಡಿವೆ", nationalImpact: "ಸಂಖ್ಯೆಗಳಲ್ಲಿ ರಾಷ್ಟ್ರೀಯ ಪ್ರಭಾವ", incomeFilterAny: "ಆದಾಯ: ಯಾವುದಾದರೂ", incomeFilterBPL: "BPL (₹1.2L ಕೆಳಗೆ)", incomeFilter2L: "₹2.5 ಲಕ್ಷಕ್ಕಿಂತ ಕಡಿಮೆ", incomeFilter5L: "₹5 ಲಕ್ಷಕ್ಕಿಂತ ಕಡಿಮೆ",
   },
   ml: {
     appName: "GovScheme AI",
@@ -378,6 +480,7 @@ export const translations: Record<LanguageCode, TranslationDict> = {
     scanOCR: "OCR സ്കാനർ",
     voiceAssistant: "വോയ്സ് അസിസ്റ്റന്റ്",
     listenVoice: "തിരയാൻ സംസാരിക്കുക...",
+    login: "ലോഗിൻ", logout: "ലോഗൗട്ട്", register: "രജിസ്റ്റർ", guestMode: "അതിഥിയായി തുടരുക", loginOrGuest: "ലോഗിൻ / അതിഥി", yourName: "നിങ്ങളുടെ പൂർണ്ണ നാമം", mobileNumber: "മൊബൈൽ നമ്പർ", yourState: "നിങ്ങളുടെ സംസ്ഥാനം", yourOccupation: "നിങ്ങളുടെ തൊഴിൽ", annualIncomeLabel: "വാർഷിക വരുമാനം (₹)", yourAge: "നിങ്ങളുടെ പ്രായം", scanDocument: "രേഖ സ്കാൻ ചെയ്യുക", extractingOCR: "AI ടെക്സ്റ്റ് വേർതിരിക്കുന്നു...", saveToVault: "സേവ് & പ്രൊഫൈൽ പൂരിപ്പിക്കുക", reviewExtracted: "വേർതിരിച്ച വിവരം പരിശോധിക്കുക", beneficiariesStat: "ഗുണഭോക്താക്കൾ", disbursedStat: "ആനുകൂല്യ വിതരണം", activeSchemesStat: "സജീവ പദ്ധതികൾ", statesCoveredStat: "സംസ്ഥാനങ്ങൾ", nationalImpact: "സംഖ്യകളിൽ ദേശീയ സ്വാധീനം", incomeFilterAny: "വരുമാനം: ഏതും", incomeFilterBPL: "BPL (₹1.2L-ൽ താഴെ)", incomeFilter2L: "₹2.5 ലക്ഷത്തിൽ താഴെ", incomeFilter5L: "₹5 ലക്ഷത്തിൽ താഴെ",
   },
   mr: {
     appName: "GovScheme AI",
@@ -430,6 +533,7 @@ export const translations: Record<LanguageCode, TranslationDict> = {
     scanOCR: "OCR स्कॅनर",
     voiceAssistant: "व्हॉइस असिस्टंट",
     listenVoice: "शोधण्यासाठी बोला...",
+    login: "लॉगिन", logout: "लॉगआउट", register: "नोंदणी", guestMode: "अतिथी म्हणून सुरू ठेवा", loginOrGuest: "लॉगिन / अतिथी", yourName: "तुमचे पूर्ण नाव", mobileNumber: "मोबाइल नंबर", yourState: "तुमचे राज्य", yourOccupation: "तुमचा व्यवसाय", annualIncomeLabel: "वार्षिक उत्पन्न (₹)", yourAge: "तुमचे वय", scanDocument: "कागदपत्र स्कॅन करा", extractingOCR: "AI मजकूर काढत आहे...", saveToVault: "सेव्ह करा आणि प्रोफाइल भरा", reviewExtracted: "काढलेल्या माहितीचे पुनरावलोकन करा", beneficiariesStat: "लाभार्थी पोहोचले", disbursedStat: "लाभ वाटप", activeSchemesStat: "सक्रिय योजना", statesCoveredStat: "राज्ये समाविष्ट", nationalImpact: "संख्यांमध्ये राष्ट्रीय प्रभाव", incomeFilterAny: "उत्पन्न: कोणतेही", incomeFilterBPL: "BPL (₹1.2L खाली)", incomeFilter2L: "₹2.5 लाखांपेक्षा कमी", incomeFilter5L: "₹5 लाखांपेक्षा कमी",
   },
   gu: {
     appName: "GovScheme AI",
@@ -482,6 +586,7 @@ export const translations: Record<LanguageCode, TranslationDict> = {
     scanOCR: "OCR સ્કેનર",
     voiceAssistant: "વોઇસ આસિસ્ટન્ટ",
     listenVoice: "શોધવા માટે બોલો...",
+    login: "લૉગઇન", logout: "લૉગઆઉટ", register: "નોંધણી", guestMode: "અતિથિ તરીકે ચાલુ રાખો", loginOrGuest: "લૉગઇન / અતિથિ", yourName: "તમારું પૂરું નામ", mobileNumber: "મોબાઇલ નંબર", yourState: "તમારું રાજ્ય", yourOccupation: "તમારો વ્યવસાય", annualIncomeLabel: "વાર્ષિક આવક (₹)", yourAge: "તમારી ઉંમર", scanDocument: "દસ્તાવેજ સ્કેન કરો", extractingOCR: "AI ટેક્સ્ટ કાઢી રહ્યું છે...", saveToVault: "સાચવો & પ્રોફાઇલ ભરો", reviewExtracted: "કાઢેલી માહિતી ચકાસો", beneficiariesStat: "લાભાર્થીઓ", disbursedStat: "લાભ વિતરણ", activeSchemesStat: "સક્રિય યોજનાઓ", statesCoveredStat: "રાજ્યો", nationalImpact: "સંખ્યામાં રાષ્ટ્રીય પ્રભાવ", incomeFilterAny: "આવક: કોઈ પણ", incomeFilterBPL: "BPL (₹1.2L નીચે)", incomeFilter2L: "₹2.5 લાખ કરતા ઓછી", incomeFilter5L: "₹5 લાખ કરતા ઓછી",
   },
   pa: {
     appName: "GovScheme AI",
@@ -534,6 +639,7 @@ export const translations: Record<LanguageCode, TranslationDict> = {
     scanOCR: "OCR ਸਕੈਨਰ",
     voiceAssistant: "ਵੌਇਸ ਅਸਿਸਟੈਂਟ",
     listenVoice: "ਖੋਜਣ ਲਈ ਬੋਲੋ...",
+    login: "ਲਾਗਇਨ", logout: "ਲੌਗਆਉਟ", register: "ਰਜਿਸਟਰ", guestMode: "ਮਹਿਮਾਨ ਵਜੋਂ ਜਾਰੀ ਰੱਖੋ", loginOrGuest: "ਲਾਗਇਨ / ਮਹਿਮਾਨ", yourName: "ਤੁਹਾਡਾ ਪੂਰਾ ਨਾਮ", mobileNumber: "ਮੋਬਾਈਲ ਨੰਬਰ", yourState: "ਤੁਹਾਡਾ ਰਾਜ", yourOccupation: "ਤੁਹਾਡਾ ਕਿੱਤਾ", annualIncomeLabel: "ਸਾਲਾਨਾ ਆਮਦਨ (₹)", yourAge: "ਤੁਹਾਡੀ ਉਮਰ", scanDocument: "ਦਸਤਾਵੇਜ਼ ਸਕੈਨ ਕਰੋ", extractingOCR: "AI ਟੈਕਸਟ ਕੱਢ ਰਿਹਾ ਹੈ...", saveToVault: "ਸੇਵ ਕਰੋ ਅਤੇ ਪ੍ਰੋਫ਼ਾਈਲ ਭਰੋ", reviewExtracted: "ਕੱਢੀ ਜਾਣਕਾਰੀ ਦੀ ਸਮੀਖਿਆ ਕਰੋ", beneficiariesStat: "ਲਾਭਪਾਤਰੀ ਪਹੁੰਚੇ", disbursedStat: "ਲਾਭ ਵੰਡੇ", activeSchemesStat: "ਕਿਰਿਆਸ਼ੀਲ ਸਕੀਮਾਂ", statesCoveredStat: "ਰਾਜ ਸ਼ਾਮਲ", nationalImpact: "ਅੰਕੜਿਆਂ ਵਿੱਚ ਰਾਸ਼ਟਰੀ ਪ੍ਰਭਾਵ", incomeFilterAny: "ਆਮਦਨ: ਕੋਈ ਵੀ", incomeFilterBPL: "BPL (₹1.2L ਤੋਂ ਘੱਟ)", incomeFilter2L: "₹2.5 ਲੱਖ ਤੋਂ ਘੱਟ", incomeFilter5L: "₹5 ਲੱਖ ਤੋਂ ਘੱਟ",
   },
   bn: {
     appName: "GovScheme AI",
@@ -586,5 +692,6 @@ export const translations: Record<LanguageCode, TranslationDict> = {
     scanOCR: "OCR স্ক্যানার",
     voiceAssistant: "ভয়েস অ্যাসিস্ট্যান্ট",
     listenVoice: "খুঁজতে বলুন...",
+    login: "লগইন", logout: "লগআউট", register: "নিবন্ধন", guestMode: "অতিথি হিসেবে চালিয়ে যান", loginOrGuest: "লগইন / অতিথি", yourName: "আপনার পূর্ণ নাম", mobileNumber: "মোবাইল নম্বর", yourState: "আপনার রাজ্য", yourOccupation: "আপনার পেশা", annualIncomeLabel: "বার্ষিক আয় (₹)", yourAge: "আপনার বয়স", scanDocument: "নথি স্ক্যান করুন", extractingOCR: "AI পাঠ্য বের করছে...", saveToVault: "সেভ করুন ও প্রোফাইল পূরণ করুন", reviewExtracted: "বের করা তথ্য পর্যালোচনা করুন", beneficiariesStat: "সুবিধাভোগীদের কাছে পৌঁছানো", disbursedStat: "সুবিধা বিতরণ", activeSchemesStat: "সক্রিয় প্রকল্প", statesCoveredStat: "রাজ্য অন্তর্ভুক্ত", nationalImpact: "সংখ্যায় জাতীয় প্রভাব", incomeFilterAny: "আয়: যেকোনো", incomeFilterBPL: "BPL (₹1.2L-এর নিচে)", incomeFilter2L: "₹2.5 লাখের নিচে", incomeFilter5L: "₹5 লাখের নিচে",
   }
 };

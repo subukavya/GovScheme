@@ -1,16 +1,16 @@
 import React from 'react';
-import { 
-  X, 
-  CheckCircle2, 
-  AlertCircle, 
-  XCircle, 
-  ExternalLink, 
-  Building2, 
-  Phone, 
-  Calendar, 
-  FileText, 
-  Share2, 
-  Bookmark, 
+import {
+  X,
+  CheckCircle2,
+  AlertCircle,
+  XCircle,
+  ExternalLink,
+  Building2,
+  Phone,
+  Calendar,
+  FileText,
+  Share2,
+  Bookmark,
   Download,
   HelpCircle,
   ShieldCheck,
@@ -46,7 +46,7 @@ export const SchemeModal: React.FC<SchemeModalProps> = ({
         title: scheme.name,
         text: `Check your eligibility for ${scheme.name} on GovScheme AI`,
         url: window.location.href,
-      }).catch(() => {});
+      }).catch(() => { });
     } else {
       navigator.clipboard.writeText(window.location.href);
       alert("Scheme link copied to clipboard!");
@@ -92,13 +92,12 @@ export const SchemeModal: React.FC<SchemeModalProps> = ({
         {/* Modal Body */}
         <div className="p-6 sm:p-8 space-y-8 text-xs text-slate-700 dark:text-slate-300">
           {/* Rule Engine Legal Eligibility Explanation Card */}
-          <div className={`p-6 rounded-2xl border ${
-            ruleResult.status === 'Eligible'
+          <div className={`p-6 rounded-2xl border ${ruleResult.status === 'Eligible'
               ? 'bg-emerald-50 dark:bg-emerald-950/30 border-emerald-200 dark:border-emerald-800'
               : ruleResult.status === 'Conditionally Eligible'
-              ? 'bg-amber-50 dark:bg-amber-950/30 border-amber-200 dark:border-amber-800'
-              : 'bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700'
-          }`}>
+                ? 'bg-amber-50 dark:bg-amber-950/30 border-amber-200 dark:border-amber-800'
+                : 'bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700'
+            }`}>
             <div className="flex items-center gap-3 mb-4">
               {ruleResult.status === 'Eligible' && <CheckCircle2 className="w-6 h-6 text-emerald-600" />}
               {ruleResult.status === 'Conditionally Eligible' && <AlertCircle className="w-6 h-6 text-amber-600" />}
@@ -170,7 +169,13 @@ export const SchemeModal: React.FC<SchemeModalProps> = ({
                 </div>
                 <div className="flex items-center gap-2 text-slate-600 dark:text-slate-300">
                   <Phone className="w-4 h-4 text-emerald-500" />
-                  <span>Helpline: <strong>{scheme.helplineNumber}</strong></span>
+                  <a
+                    href={`tel:${scheme.helplineNumber.split('/')[0].trim()}`}
+                    className="font-bold text-emerald-600 dark:text-emerald-400 hover:underline flex items-center gap-1"
+                    title="Click to call helpline"
+                  >
+                    📞 {scheme.helplineNumber}
+                  </a>
                 </div>
                 <div className="flex items-center gap-2 text-slate-600 dark:text-slate-300">
                   <Building2 className="w-4 h-4 text-blue-500" />

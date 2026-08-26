@@ -1,18 +1,18 @@
 import React from 'react';
-import { 
-  Building2, 
-  Sparkles, 
-  Bot, 
-  ShieldCheck, 
-  Globe2, 
-  ArrowRight, 
-  CheckCircle2, 
-  UserCheck, 
-  FileText, 
-  ExternalLink, 
-  Mic, 
-  ScanLine, 
-  Zap, 
+import {
+  Building2,
+  Sparkles,
+  Bot,
+  ShieldCheck,
+  Globe2,
+  ArrowRight,
+  CheckCircle2,
+  UserCheck,
+  FileText,
+  ExternalLink,
+  Mic,
+  ScanLine,
+  Zap,
   Award,
   ChevronRight
 } from 'lucide-react';
@@ -139,6 +139,32 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
               {t.govtVerifiedDesc}
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* National Impact Stats Banner */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-8">
+        <div className="bg-gradient-to-r from-blue-950 via-blue-900 to-indigo-950 rounded-2xl px-6 py-8 border border-blue-800/50 shadow-xl">
+          <p className="text-center text-[10px] font-extrabold uppercase tracking-widest text-blue-400 mb-6">
+            National Impact in Numbers
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            {[
+              { value: '15 Cr+', label: 'Beneficiaries Reached', color: 'text-amber-400' },
+              { value: '₹2.5L Cr', label: 'Benefits Disbursed', color: 'text-emerald-400' },
+              { value: '500+', label: 'Active Schemes', color: 'text-blue-300' },
+              { value: '28', label: 'States Covered', color: 'text-purple-400' },
+            ].map((stat, i) => (
+              <div key={i} className="space-y-1">
+                <div className={`text-3xl sm:text-4xl font-black font-heading ${stat.color} tabular-nums`}>
+                  {stat.value}
+                </div>
+                <div className="text-[11px] font-semibold text-blue-300/80 uppercase tracking-wide">
+                  {stat.label}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
